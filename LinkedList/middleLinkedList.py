@@ -1,6 +1,9 @@
 
 
 # Node class
+from email import header
+
+
 class Node:
     def __init__(self, data) -> None:
         self.data = data
@@ -70,10 +73,40 @@ class LinkedList:
         temp = None
         return self
 
+    # tow pointer solutions
+    # def middleElement(self):
+    #     slow = self.head
+    #     fast = self.head
+    #     while fast and fast.next:
+    #         slow = slow.next
+    #         fast = fast.next.next
+    #     return slow.data
+
+    # Initialize mid element as head and initialize a counter as 0.
+    # Traverse the list from head, while traversing increment the counter and
+    # change mid to mid -> next whenever the counter is odd.
+    # So the mid will move only half of the total length of the list.
+    def middleElement(self):
+        count = 0
+        mid = self.head
+        temp = self.head
+        while temp != None:
+            if count & 1:
+                mid = mid.next
+            count += 1
+            temp = temp.next
+        if mid != None:
+            return mid.data
+        # return self
+
 
 if __name__ == '__main__':
     llist = LinkedList()
     llist.push(4).push(5).push(6)
     llist.unshift(3).unshift(2).printList()
-    print('\n')
-    llist.delNode(3).printList()
+    print('')
+    print('head ', llist.middleElement())
+    print('')
+    llist.delNode(3).delNode(5).delNode(2).delNode(4).delNode(6).printList()
+    print('')
+    print('head ', llist.middleElement())
