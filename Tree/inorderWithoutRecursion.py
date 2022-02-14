@@ -1,7 +1,7 @@
 class Node:
-    def __init__(self, data) -> None:
-        self.left = None
-        self.right = None
+    def __init__(self, data, left=None, right=None) -> None:
+        self.left = left
+        self.right = right
         self.val = data
 
 
@@ -34,7 +34,6 @@ def inOrder(root):
             break
         # print()
 
-
 # Driver program to test above function
 # """ Constructed binary tree is
 #             1
@@ -43,10 +42,13 @@ def inOrder(root):
 #        /  \
 #       4    5   """
 #     4 2 5 1 3
-root = Node(1)
-root.left = Node(2)
-root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
+# root = Node(1, )
+# root.left = Node(2)
+# root.right = Node(3)
+# root.left.left = Node(4)
+# root.left.right = Node(5)
+
+
+root = Node(1, right=Node(3), left=Node(2, left=Node(4), right=Node(5)))
 
 inOrder(root)
