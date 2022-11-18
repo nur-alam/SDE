@@ -10,13 +10,18 @@ int main() {
     for (int i = 10; i >= 5; i--) {
         v.push_back(i);
     }
-    // sort(v.begin(), v.end());
-    // v.erase(v.begin(), v.end());
-    reverse(v.begin(), v.end());
-    for (it = v.begin(); it != v.end(); it++)
-    {
+    sort(v.begin(), v.end());
+    sort(v.begin(), v.begin() + 2);
+    for (it = v.begin(); it != v.end(); it++) {
         cout << *it << " ";
     }
     cout << endl;
+    // int a[5] = {4, 5, 1, 2, 3};
+    // sort(a, a + 3);
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     cout << a[i] << " ";
+    // }
+    // cout << endl;
     return 0;
 }
