@@ -13,10 +13,15 @@
 #include <algorithm>
 using namespace std;
 
+#define PB push_back
+#define F first
+#define S second
+
 int visited[100];
 int level[100];
+vector<int> g[100];
 
-void bfs(vector<int> g[], int node) {
+void bfs(int node) {
     queue<int> q;
     q.push(node);
     visited[node] = 1;
@@ -24,7 +29,7 @@ void bfs(vector<int> g[], int node) {
         int top = q.front();
         cout << top << " ";
         q.pop();
-        for (int child : g[top]) {
+        for(int child : g[top]) {
             if(!visited[child]) {
                 q.push(child);
                 visited[child] = 1;
@@ -35,9 +40,8 @@ void bfs(vector<int> g[], int node) {
 }
 
 int main() {
-    freopen("input.txt","r", stdin);
+    freopen("input.txt", "r", stdin);
     int node, edge;
-    vector<int> g[100];
     cin >> node >> edge;
     for (int i = 0; i < edge; i++) {
         int x, y;
@@ -45,13 +49,16 @@ int main() {
         g[x].push_back(y);
         g[y].push_back(x);
     }
-    bfs(g, 0);
-    // queue<int> q;
-    // q.push(g[0][0]);
-    // int top = q.front();
-    // for (int &child : g[0]) {
-    //     cout << child << " ";
+
+    // for (int i = 0; i < node; i++) {
+    //     cout << "Node " << i << " : ";
+    //     for (int j = 0; j < g[i].size(); j++) {
+    //         cout << g[i][j] << " ";
+    //     }
+    //     cout << endl;
     // }
-    cout << " yo " << g[0][0] << endl;
-    return 0;
+
+    bfs(0);
+
+    return 0; 
 }
