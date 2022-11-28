@@ -13,52 +13,73 @@
 #include <algorithm>
 using namespace std;
 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;  // vector<vector<int>>
+typedef vector<vl> vvl;  // vector<vector<long long>>
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vpi; // vector<pair<int, int>>
+typedef vector<pll> vpl; // vector<pair<ll, ll>>
+
 #define PB push_back
 #define F first
 #define S second
 
-int visited[100];
-int level[100];
-vector<int> g[100];
+void printGraph(vpi g[] ,int node) {
+    for (int i = 0; i < node; i++) {
+        cout << "Node " << i << " : ";
+        for (int j = 0; j < g[i].size(); j++) {
+            cout << "(" << g[i][j].first << " " << g[i][j].second << ")" << " ";
+        }
+        cout << endl;
+    }
+}
 
-void bfs(int node) {
-    queue<int> q;
-    q.push(node);
-    visited[node] = 1;
-    while (!q.empty()) {
-        int top = q.front();
-        cout << top << " ";
-        q.pop();
-        for(int child : g[top]) {
-            if(!visited[child]) {
-                q.push(child);
-                visited[child] = 1;
-                level[child] = level[child] + 1;
+void dijkstra(int s, int node, vpi g[], ll dist[]) {
+    for (int i = 0; i <= node; i++)
+        dist[i] = 99999999;
+    dist[s] = 0; // initializing source distance
+    priority_queue<pll, vpl, greater<pll> > pq;
+    pq.push(make_pair(s, 0));
+    while(!pq.empty()) {
+        int u = pq.top().first;
+        int curD = pq.top().second;
+        pq.pop();
+        if(curD > dist[u]) continue;
+        for(auto &[v, w] : g[u]) {
+            // int v = p.first;
+            // ll w = p.second;
+            if(curD + w < dist[v]) {
+                dist[v] = curD + w;
+                pq.push(make_pair(v, dist[v]));
             }
         }
     }
 }
 
 int main() {
-    freopen("input.txt", "r", stdin);
+    freopen("input2.txt", "r", stdin);
+    // vector<pair<int, int> > g[100];
+    vpi g[100];
+    ll dist[100];
     int node, edge;
     cin >> node >> edge;
     for (int i = 0; i < edge; i++) {
-        int x, y;
-        cin >> x >> y;
-        g[x].push_back(y);
-        g[y].push_back(x);
+        int u, v, w;
+        cin >> u >> v >> w;
+        g[u].push_back(make_pair(v, w));
+        g[v].push_back(make_pair(u, w));
     }
 
-    // for (int i = 0; i < node; i++) {
-    //     cout << "Node " << i << " : ";
-    //     for (int j = 0; j < g[i].size(); j++) {
-    //         cout << g[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
+    dijkstra(1, node, g, dist);
 
-    bfs(0);
+    printGraph(g, node);
+
+    for (ll i = 1; i <= node; i++) {
+        cout << dist[i] << " ";
+    }
 
     return 0; 
 }
