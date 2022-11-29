@@ -39,7 +39,7 @@ void printGraph(vpi g[] ,int node) {
 
 void dijkstra(int s, int node, vpi g[], ll dist[]) {
     for (int i = 0; i <= node; i++)
-        dist[i] = 99999999;
+        dist[i] = LLONG_MAX;
     dist[s] = 0; // initializing source distance
     priority_queue<pll, vpl, greater<pll> > pq;
     pq.push(make_pair(s, 0));
@@ -83,3 +83,14 @@ int main() {
 
     return 0; 
 }
+
+
+// input
+// 3 4
+// 1 2 6
+// 1 3 2
+// 3 2 3
+// 1 3 4
+
+// output
+// 0 5 2
