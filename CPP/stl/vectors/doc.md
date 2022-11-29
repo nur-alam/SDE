@@ -25,6 +25,27 @@
 ###### Access Elements of a Vector
     vector<int> num {1, 2, 3, 4, 5};
     cout << num.at(0) << endl;
+    vector<vector<int>> matrix {
+        { 1, 1, 1, 1 },
+        { 1, 1, 1, 1 },
+        { 1, 1, 1, 1 }
+    };
+##### iterating over vectorOfVector/2d vector
+    vector< vector<int> > vvi;
+    vector< vector<int> >::iterator row;
+    vector<int>::iterator col;
+    for (row = vvi.begin(); row != vvi.end(); row++) {
+        for (col = row->begin(); col != row->end(); col++) {
+            cout << *col << " ";
+        }
+    }
+    for(auto &row : g){
+        for(auto &col : row){
+                cout << col << " ";
+        }
+        cout << endl;
+    }
+
 ###### Changing Vector element
     v.at(1) = 9;
     v.at(4) = 7
