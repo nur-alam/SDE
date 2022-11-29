@@ -12,10 +12,10 @@
 
 using namespace std;
 
-int adjMat[100][100];
 
 int main() {
     freopen("input.txt", "r", stdin);
+    int adjMat[10][10];
     int node, edge;
     cin >> node >> edge;
 
