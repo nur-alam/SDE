@@ -21,14 +21,14 @@ void bfs(vector<int> g[], int node) {
     q.push(node);
     visited[node] = 1;
     while (!q.empty()) {
-        int top = q.front();
-        cout << top << " ";
+        int parentNode = q.front();
+        cout << parentNode << " ";
         q.pop();
-        for (int child : g[top]) {
+        for (int child : g[parentNode]) {
             if(!visited[child]) {
                 q.push(child);
                 visited[child] = 1;
-                level[child] = level[child] + 1;
+                level[child] = level[parentNode] + 1;
             }
         }
     }
@@ -39,13 +39,15 @@ int main() {
     int node, edge;
     vector<int> g[100];
     cin >> node >> edge;
+    
     for (int i = 0; i < edge; i++) {
         int x, y;
         cin >> x >> y;
         g[x].push_back(y);
         g[y].push_back(x);
     }
+    
     bfs(g, 0);
-    cout << " yo " << g[0][0] << endl;
+
     return 0;
 }
