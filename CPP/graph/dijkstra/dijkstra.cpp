@@ -41,11 +41,11 @@ void dijkstra(int s, int node, vpi g[], ll dist[]) {
     for (int i = 0; i <= node; i++)
         dist[i] = LLONG_MAX;
     dist[s] = 0; // initializing source distance
-    priority_queue<pll, vpl, greater<pll> > pq;
-    pq.push(make_pair(s, 0));
+    priority_queue< pair<long long, long long>, vector< pair<long long, long long> >, greater< pair<long long, long long> > > pq;
+    pq.push(make_pair(0, s));
     while(!pq.empty()) {
-        int u = pq.top().first;
-        int curD = pq.top().second;
+        int u = pq.top().second;
+        int curD = pq.top().first;
         pq.pop();
         if(curD > dist[u]) continue;
         for(auto &[v, w] : g[u]) {
@@ -53,7 +53,7 @@ void dijkstra(int s, int node, vpi g[], ll dist[]) {
             // ll w = p.second;
             if(curD + w < dist[v]) {
                 dist[v] = curD + w;
-                pq.push(make_pair(v, dist[v]));
+                pq.push(make_pair(dist[v], v));
             }
         }
     }

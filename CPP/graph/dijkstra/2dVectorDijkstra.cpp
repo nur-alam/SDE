@@ -39,20 +39,20 @@ void printGraph(vector<vector<int> > g[], int node) {
 
 vector<int> dijkstra(int node, vector<vector<int> > g[], int s) {
     vector<int> dist(node, INT_MAX);
-    // priority_queue< pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > pq;
-    priority_queue<pii, vpi, greater<pii> > pq;
+    priority_queue< pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > pq;
     dist[s] = 0;
-    pq.push(make_pair(s, 0));
+    pq.push(make_pair(0, s));
     while(!pq.empty()){
-        int u = pq.top().first;
-        int curD = pq.top().second;
+        int u = pq.top().second;
+        int curD = pq.top().first;
         pq.pop();
+        if(curD > dist[u]) continue;
         for(auto child : g[u]) {
             int v = child[0];
             int w = child[1];
             if(dist[v] > curD + w) {
                 dist[v] = curD + w;
-                pq.push(make_pair(v, dist[v]));
+                pq.push(make_pair(dist[v], v));
             }
         }
     }
