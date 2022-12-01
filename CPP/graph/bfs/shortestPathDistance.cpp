@@ -72,8 +72,8 @@ int main() {
     freopen("input.txt", "r", stdin);
 
     int node, edge;
-    vector<int> g[10];
     cin >> node >> edge;
+    vector<int> g[node];
     while(edge--) {
         int x, y;
         cin >> x >> y;
@@ -82,7 +82,7 @@ int main() {
     }
     bfs(g, node);
     getNodesDistance(node);
-    getPath(5);
+    getPath(4);
     // printGraph(g, node);
     // cout << endl << "yo" << endl;
 

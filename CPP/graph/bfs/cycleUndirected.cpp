@@ -28,15 +28,15 @@ bool detectCycle(vector<int> g[], int node) {
         for (int child : g[u]) {
             if(visited[child] && parent[u] != child) {
                 flag = 1;
-                break;
-            } else if (!visited[child]) {
+                return flag;
+            }
+            else if (!visited[child]) {
                 q.push(child);
                 parent[child] = u;
                 visited[child] = 1;
                 dist[child] = dist[u] + 1;
             }
         }
-        if(flag) { break; }
     }
     return flag;
 }
@@ -44,8 +44,8 @@ bool detectCycle(vector<int> g[], int node) {
 int main() {
     freopen("input.txt","r", stdin);
     int node, edge;
-    vector<int> g[100];
     cin >> node >> edge;
+    vector<int> g[node];
     
     for (int i = 0; i < edge; i++) {
         int x, y;
