@@ -15,20 +15,22 @@ using namespace std;
 
 int visited[100];
 int level[100];
+int parent[100];
 
 void bfs(vector<int> g[], int node) {
     queue<int> q;
     q.push(node);
     visited[node] = 1;
     while (!q.empty()) {
-        int parentNode = q.front();
-        cout << parentNode << " ";
+        int u = q.front();
+        cout << u << " ";
         q.pop();
-        for (int child : g[parentNode]) {
+        for (int child : g[u]) {
             if(!visited[child]) {
                 q.push(child);
+                parent[child] = u;
                 visited[child] = 1;
-                level[child] = level[parentNode] + 1;
+                level[child] = level[u] + 1;
             }
         }
     }
