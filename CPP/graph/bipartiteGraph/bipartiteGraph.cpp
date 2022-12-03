@@ -68,15 +68,13 @@ int main() {
 }
 
 // memset(color,-1,sizeof color);
-// input
 // 6 5
 // 0 3
 // 0 4
 // 0 5
 // 1 3
 // 4 5
-// output 
-// 0
+// output
 // input
 // 4 4
 // 0 2
