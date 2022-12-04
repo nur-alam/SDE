@@ -13,10 +13,10 @@
 #include <algorithm>
 using namespace std;
 
-bool checkBipartite(vector<int> g[], int color[], int size, int node) {
+bool checkBipartite(int startingNode, int size, int color[], vector<int> g[]) {
     queue<int> q;
-    q.push(node);
-    color[node] = 0;
+    q.push(startingNode);
+    color[startingNode] = 0;
     while(!q.empty()) {
         int u = q.front();
         q.pop();
@@ -38,7 +38,7 @@ bool isBipartite(int node, vector<int> g[]) {
         color[i] = -1;
     for (int i = 0; i < node; i++) {
         if (color[i] == -1) {
-            if (checkBipartite(g, color, node, i) == false) {
+            if (checkBipartite(i, node, color, g) == false) {
                 return false;
             }
         }
@@ -48,7 +48,7 @@ bool isBipartite(int node, vector<int> g[]) {
 
 int main() {
 
-    freopen("input.text", "r", stdin);
+    freopen("input.txt", "r", stdin);
     int tc;
     cin >> tc;
     while(tc--) {
@@ -75,6 +75,8 @@ int main() {
 // 1 3
 // 4 5
 // output
+//0
+
 // input
 // 4 4
 // 0 2
