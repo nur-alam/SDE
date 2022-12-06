@@ -24,44 +24,29 @@ void printGraph(vector<int> g[], int node) {
     cout << endl;
 }
 
-void dfs(int node, int vis[], stack<int> &st, vector<int> adj[]) {
-    vis[node] = 1;
-    for(auto v : adj[node]) {
-        if(!vis[v]) {
-            dfs(v, vis, st, adj);
-        }
-    }
-    st.push(node);
-}
-
-vector<int> topoSort(int node, vector<int> adj[]) {
-    int vis[node];
-    for (int i = 0; i < node; i++) vis[i] = 0;
-    stack<int> st;
-    for (int i = 0; i < node; i++) {
-        if(!vis[i]) {
-            dfs(i, vis, st, adj);
-        }
-    }
-    vector<int> tmp;
-    while(!st.empty()) {
-        tmp.push_back(st.top());
-        st.pop();
-    }
-    return tmp;
-}
-
-int check(int size, vector <int> topo, vector<int> adj[]) {
-    vector<int> map(size, -1);
-    for (int i = 0; i < size; i++)
-        map[topo[i]] = i;
+vector<int> topoSort(int size, vector<int> adj[]) {
+    int indegree[size];
+    for (int i = 0; i < size; i++) indegree[i] = 0;
     for (int i = 0; i < size; i++) {
-        for(int v : adj[i]) {
-            if(map[i] > map[v])
-                return 0;
+        for(auto v : adj[i]) {
+            indegree[v]++;
         }
     }
-    return 1;
+    queue<int> q;
+    for (int i = 0; i < size; i++) {
+        if(indegree[i] == 0) q.push(i);
+    }
+    vector<int> topo;
+    while(!q.empty()) {
+        int node = q.front();
+        q.pop();
+        topo.push_back(node);
+        for(auto v : adj[node]) {
+            indegree[v]--;
+            if(indegree[v] == 0) q.push(v);
+        }
+    }
+    return topo;
 }
 
 int main() {
@@ -82,7 +67,6 @@ int main() {
         for (int i = 0; i < topo.size(); i++) {
             cout << topo[i] << " ";
         }
-        cout << endl << check(node, topo, adj) << endl;
         // cout << "yo" << endl;
     }
 
