@@ -99,6 +99,7 @@ int main() {
 // aab
 // adj 
 // output
+// bdac
 // Node 0 : 1 
 // Node 1 : 
 // Node 2 : 0 
