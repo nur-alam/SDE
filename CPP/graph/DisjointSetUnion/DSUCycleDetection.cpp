@@ -39,8 +39,8 @@ int main() {
     freopen("input.txt","r", stdin);
     int node, edge;
     cin >> node >> edge;
-    vector<int> parent(node);
-    vector<int> size(node);
+    vector<int> parent(node + 1);
+    vector<int> size(node + 1);
     for (int i = 0; i <= node; i++) {
         make_set(i, parent, size);
     }
@@ -48,10 +48,10 @@ int main() {
     for (int i = 0; i < edge; i++) {
         int u, v;
         cin >> u >> v;
-        vector<int> yo;
-        yo.push_back(u);
-        yo.push_back(v);
-        edges.push_back(yo);
+        vector<int> temp;
+        temp.push_back(u);
+        temp.push_back(v);
+        edges.push_back(temp);
     }
     bool cycle = false;
     for (auto it : edges) {
@@ -66,6 +66,6 @@ int main() {
         }
     }
     cout << cycle << endl;
-    
+
     return 0;
 }

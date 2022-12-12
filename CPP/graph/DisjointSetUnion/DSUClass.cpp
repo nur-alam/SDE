@@ -65,8 +65,6 @@ class DisjointSet {
 
 int main()
 {
-    int yo[5];
-    memset(yo, 1, sizeof(yo));
     DisjointSet ds(7);
     ds.unionBySize(1, 2);
     ds.unionBySize(2, 3);
