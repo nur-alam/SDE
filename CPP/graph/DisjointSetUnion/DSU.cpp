@@ -13,7 +13,7 @@
 #include <algorithm>
 using namespace std;
 
-void make(int v, int parent[], int size[]) {
+void make_set(int v, int parent[], int size[]) {
     parent[v] = v;
     size[v] = 1;
 }
@@ -44,13 +44,18 @@ int main() {
     for (int i = 0; i <= node; i++) {
         parent[i] = i;
         size[i] = 1;
-        make(i, parent, size);
+        make_set(i, parent, size);
     }
     while(edge--) {
         int u, v;
         cin >> u >> v;
         Union(u, v, parent, size);
     }
+
+    cout << find(0, parent, size) << endl;
+    cout << find(2, parent, size) << endl;
+    cout << find(3, parent, size) << endl;
+    cout << find(4, parent, size) << endl;
 
     return 0;
 }

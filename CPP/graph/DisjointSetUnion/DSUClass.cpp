@@ -61,26 +61,36 @@ class DisjointSet {
                 size[ulp_u] += size[ulp_v]; 
             }
         }
-}; 
+};
 
-int main() {
+int main()
+{
+    int yo[5];
+    memset(yo, 1, sizeof(yo));
     DisjointSet ds(7);
-    ds.unionBySize(1, 2); 
-    ds.unionBySize(2, 3); 
-    ds.unionBySize(4, 5); 
-    ds.unionBySize(6, 7); 
-    ds.unionBySize(5, 6); 
-    // if 3 and 7 same or not 
+    ds.unionBySize(1, 2);
+    ds.unionBySize(2, 3);
+    ds.unionBySize(4, 5);
+    ds.unionBySize(6, 7);
+    ds.unionBySize(5, 6);
+    // if 3 and 7 same or not
     if(ds.findUPar(3) == ds.findUPar(7)) {
-        cout << "Same\n"; 
-    }
-    else cout << "Not same\n"; 
-
-    ds.unionBySize(3, 7); 
-
-    if(ds.findUPar(3) == ds.findUPar(7)) {
-        cout << "Same\n"; 
+        cout << "Same\n";
     }
     else cout << "Not same\n";
-	return 0;
+
+    ds.unionBySize(3, 7);
+
+    cout << ds.findUPar(0) << endl;
+    cout << ds.findUPar(2) << endl;
+    cout << ds.findUPar(3) << endl;
+    cout << ds.findUPar(4) << endl;
+
+    if (ds.findUPar(3) == ds.findUPar(7))
+    {
+        cout << "Same\n";
+    }
+    else
+        cout << "Not same\n";
+    return 0;
 }
