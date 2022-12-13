@@ -37,7 +37,7 @@ int spanningTree(int V, vector<vector<int> > adj[]) {
             }
         }
     }
-    for (int i = 0; i < mst.size(); i++){
+    for (int i = i; i < mst.size(); i++){
         cout << mst[i].first << " " << mst[i].second.second << " " << mst[i].second.first << endl;
     }
     return sum;

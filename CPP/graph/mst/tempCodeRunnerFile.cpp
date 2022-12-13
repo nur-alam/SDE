@@ -1,1 +1,0 @@
-cout << wt << " " << node << " " << pare
