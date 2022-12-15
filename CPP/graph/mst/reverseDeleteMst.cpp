@@ -14,7 +14,7 @@
 using namespace std;
 
 bool compare(vector<int>& a, vector<int>& b) {
-    return (a[2] > b[2]);
+    return (a[2] < b[2]);
 }
 
 class DisjointSet {
@@ -52,15 +52,11 @@ class DisjointSet {
 int RevDelMST(int Arr[], int V, int E) {
     vector<vector<int> > edges;
     for (int i = 0; i < 3 * E; i+=3) {
-            int u = Arr[i];
-            int v = Arr[i + 1];
-            int w = Arr[i + 2];
-            edges.push_back({ u, v, w });
+        int u = Arr[i];
+        int v = Arr[i + 1];
+        int w = Arr[i + 2];
+        edges.push_back({ u, v, w });
     }
-    for(auto v : edges) {
-        cout << v[0] << " " << v[1] << " " << v[2] << endl;
-    }
-    cout << endl;
     sort(edges.begin(), edges.end(), compare);
     // sort(edges.begin(), edges.end(), [](vector<int>& a, vector<int>& b) {return a[2] < b[2];});
     int sum = 0;
@@ -76,10 +72,6 @@ int RevDelMST(int Arr[], int V, int E) {
         }
     }
     return sum;
-    // for(auto v : edges) {
-    //     cout << v[0] << " " << v[1] << " " << v[2] << endl;
-    // }
-    // cout << endl;
 };
 
 int main() {
@@ -91,5 +83,6 @@ int main() {
         cin >> Arr[i];
     }
     cout << RevDelMST(Arr, V, E) << endl;
+
     return 0;
 }
