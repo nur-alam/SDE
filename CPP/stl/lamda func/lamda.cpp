@@ -29,18 +29,10 @@ int main() {
 
     printVector(v);
 
-    // sort(v.begin(), v.end(), [](int a, int b) {
-    //     // cout << a << " " << b << " " << endl;
-    //     return a == b;
-    // });
-
-    p = unique(v.begin(), v.end(), [](int a, int b)
-    {
+    sort(v.begin(), v.end(), [](int a, int b) {
+        // cout << a << " " << b << " " << endl;
         return a == b;
     });
- 
-    // resizing vector to make size equal to total different number
-    v.resize(distance(v.begin(), p));
     printVector(v);
 
     printVector(v);
