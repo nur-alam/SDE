@@ -8,6 +8,10 @@
 
     // Initializer list
     vector<int> v = {1, 2, 3, 4, 5};
+    You need to pass it as an option to the compiler, 
+    e.g. g++ -std=c++11 prog.cpp
+    or
+    g++ -std=c++11 <filename> 
 
 ###### vector iteration
     // iterator 
