@@ -30,7 +30,7 @@ int main() {
     printVector(v);
 
     sort(v.begin(), v.end(), [](int a, int b) {
-        // cout << a << " " << b << " " << endl;
+        // cout << a << " " << b << " " << endl; 
         return a == b;
     });
     printVector(v);
