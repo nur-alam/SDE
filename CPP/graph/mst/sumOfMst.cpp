@@ -13,6 +13,8 @@
 #include <algorithm>
 using namespace std;
 
+// https://practice.geeksforgeeks.org/problems/reverse-delete-algorithm-for-minimum-spanning-tree1158/1
+
 int spanningTree(int V, vector<vector<int> > adj[]) {
     priority_queue< pair<int, int>, vector<pair<int, int> >, greater<pair<int,int> > > pq;
     vector<int> vis(V, 0);
