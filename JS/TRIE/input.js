@@ -1,4 +1,5 @@
 // const fs = require('fs');
+"use strict";
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
@@ -10,10 +11,14 @@ process.stdin.on('data', inputStdin => {
     inputString += inputStdin;
 });
 
-process.stdin.on('end', _ => {
-    inputString = inputString.replace(/\s*$/, '')
+process.stdin.on('end', (_) => {
+    inputString = inputString
+        .trim()
         .split('\n')
-        .map(str => str.replace(/\s*$/, ''));
+        .map(str => {
+            return str.trim();
+        });
+                    // .map(str => str.trim();
     main();
 });
 
