@@ -18,7 +18,6 @@ process.stdin.on('end', (_) => {
         .map(str => {
             return str.trim();
         });
-                    // .map(str => str.trim();
     main();
 });
 
