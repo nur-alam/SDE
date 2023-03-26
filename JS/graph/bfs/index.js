@@ -18,6 +18,15 @@ process.stdin.on('end', function() {
 function readLine() {
     return inputString[currentLine++];
 }
+function printGraph(adj) {
+    for (let i = 0; i < adj.length; i++) {
+        let arr = [];
+        for (let v of adj[i]) {
+            arr.push(v);
+        }
+        console.log(arr);
+    }
+}
 
 function bfs(N, adj) {
     let visited = new Array(N).fill(0);
@@ -37,7 +46,7 @@ function bfs(N, adj) {
             }
         }
     }
-    console.log(bfsTraversal);
+    // console.log(bfsTraversal);
 }
 
 function main() {
@@ -55,15 +64,7 @@ function main() {
             adj[u].push(v);
             // adj[v].push(u);
         }
-        // console.log(adj);
-        // for (let i = 0; i < N; i++) {
-        //     let arr = [];
-        //     for (let v of adj[i]) {
-        //         arr.push(v);
-        //     }
-        //     console.log(arr);
-        // }
         bfs(N, adj);
-        // console.table(adj);
+        printGraph(adj);
     }
 }
