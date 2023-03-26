@@ -19,12 +19,8 @@ function readLine() {
     return inputString[currentLine++];
 }
 function printGraph(adj) {
-    for (let i = 0; i < adj.length; i++) {
-        let arr = [];
-        for (let v of adj[i]) {
-            arr.push(v);
-        }
-        console.log(arr);
+    for (let i = 0; i < adj.size; i++) {
+        console.log(adj.get(i));
     }
 }
 
@@ -61,6 +57,7 @@ function main() {
             adj.get(u).add(v);
         }
         // console.log(adj);
+        // printGraph(adj);
         bfs(N, adj, 0);
     }
 }
