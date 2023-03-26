@@ -1,0 +1,12 @@
+{
+  "name": "JS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon graph/bfs/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

@@ -1,0 +1,1 @@
+// "start": "nodemon --watch StreamBuffer/index1.js --watch StreamBuffer/yo.txt StreamBuffer/index1.js < StreamBuffer/yo.txt -e js,txt"

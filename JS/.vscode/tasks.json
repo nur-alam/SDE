@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Node js",
+			"command": "node",
+			"args": [
+				"${file}",
+				"<",
+				"${fileDirname}/input.txt",
+				">",
+				"${fileDirname}/output.txt"
+			],
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "install dependencies from package",
+		}
+	]
+}

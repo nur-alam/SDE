@@ -86,7 +86,6 @@ class Trie {
         }
         return ans;
     }
-
 }
 
 const trie = new Trie();
