@@ -37,6 +37,28 @@ function addEdge(u, v) {
 	adjMat[v][u] = 1;
 }
 
+function removeLastRowCol() {
+	for (let i = 0; i < adjMat.length; i++) {
+		adjMat[i].pop();
+	}
+	adjMat.pop();
+}
+
+function removeNode(node) {
+	let totalNode = adjMat.length;
+	while (node < totalNode - 1 && node >= 0) {
+		for (let i = 0; i < totalNode; i++) {
+			adjMat[i][node] = adjMat[i][node + 1];
+		}
+		for (let i = 0; i < totalNode - 1; i++) {
+			adjMat[node][i] = adjMat[node + 1][i];
+		}
+		node++;
+	}
+	totalNode--;
+	removeLastRowCol();
+}
+
 function addNode(node) {
 	for (let i = 0; i < adjMat.length; i++) {
 		adjMat[i].push(0);
@@ -53,5 +75,7 @@ function main() {
 	addNode(6);
 	addEdge(5, 1);
 	addEdge(6, 1);
+	removeNode(5);
 	console.table(adjMat);
+	console.table(adjMat.length);
 }
