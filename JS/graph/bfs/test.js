@@ -7,10 +7,13 @@
 // adj.get(0).add(2);
 // adj.get(0).add(1);
 // console.log(adj.get(0));
-const zeros = (m, n) => [...Array(m)].map((e) => Array(n).fill(0));
-// console.log(zeros(3, 4));
-console.log(
-	Array(2)
-		.fill(0)
-		.map((e) => Array(2).fill(0))
-);
+// const zeros = (m, n) => [...Array(m)].map((e) => Array(n).fill(0));
+// // console.log(zeros(3, 4));
+// console.log(
+// 	Array(2)
+// 		.fill(0)
+// 		.map((e) => Array(2).fill(0))
+// );
+
+let yo = [...Array(2)].map((n) => Array(2).fill(0));
+console.log(yo);
