@@ -46,17 +46,20 @@ function removeLastRowCol() {
 
 function removeNode(node) {
 	let totalNode = adjMat.length;
-	while (node < totalNode - 1 && node >= 0) {
-		for (let i = 0; i < totalNode; i++) {
-			adjMat[i][node] = adjMat[i][node + 1];
+	if (node < totalNode && node >= 0) {
+		while (node <= totalNode - 2 && node >= 0) {
+			//replace column to next column
+			for (let i = 0; i < totalNode; i++) {
+				adjMat[i][node] = adjMat[i][node + 1];
+			}
+			//replace row to next row
+			for (let i = 0; i < totalNode; i++) {
+				adjMat[node][i] = adjMat[node + 1][i];
+			}
+			node++;
 		}
-		for (let i = 0; i < totalNode - 1; i++) {
-			adjMat[node][i] = adjMat[node + 1][i];
-		}
-		node++;
+		removeLastRowCol();
 	}
-	totalNode--;
-	removeLastRowCol();
 }
 
 function addNode(node) {
@@ -71,11 +74,11 @@ function main() {
 	adjMat = multiDarray(N, N);
 	addEdge(0, 1);
 	addEdge(0, 2);
+	addEdge(1, 2);
 	addNode(5);
 	addNode(6);
 	addEdge(5, 1);
 	addEdge(6, 1);
-	removeNode(5);
+	removeNode(2);
 	console.table(adjMat);
-	console.table(adjMat.length);
 }
