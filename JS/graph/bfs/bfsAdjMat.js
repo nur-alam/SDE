@@ -30,6 +30,16 @@ let visited;
 let parent;
 let level;
 
+function getPath(node) {
+	let path = [];
+	path.push(node);
+	while (parent[node] !== -1) {
+		node = parent[node];
+		path.unshift(node);
+	}
+	console.log(path);
+}
+
 function bfs(adjMat, startNode = 0) {
 	let bfsTraversal = [];
 	let q = [];
@@ -78,5 +88,8 @@ function main() {
 		adjMat[v][u] = 1;
 	}
 	bfs(adjMat, 0);
+	console.log('path of %d', 4);
+	getPath(4);
+	// console.log(getPath(4), 'path');
 	// console.log(adjMat);
 }
