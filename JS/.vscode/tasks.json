@@ -18,6 +18,14 @@
 				"isDefault": true
 			},
 			"detail": "install dependencies from package",
+			"presentation": {
+				"echo": true,
+				"reveal": "never",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			}
 		}
 	]
 }
