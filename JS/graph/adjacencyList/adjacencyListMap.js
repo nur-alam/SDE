@@ -26,13 +26,25 @@ function multiDarray(row, col) {
 	return [...Array(row)].map(() => Array(col).fill(0));
 }
 
+function addEdge(graph, u, v) {
+    graph.get(u).add(v);
+    graph.get(v).add(u);
+}
+
 function main() {
 	let [N, E] = readLine().split(' ').map(Number);
-	let adjList = [...Array(N)].map(() => new Array());
-	for (let i = 0; i < E; i++) {
-		let [u, v] = readLine().split(' ').map(Number);
-		adjList[u].push(v);
-		adjList[v].push(u);
-	}
-    console.log(adjList);
+    let graph = new Map();
+    for (let i = 0; i < N; i++) {
+        graph.set(i, new Set());
+    }
+    // for (let i = 0; i < E; i++) {
+    //     let [u, v] = readLine().split(' ').map(Number);
+    //     graph.get(u).add(v);
+    //     graph.get(v).add(u);
+    // }
+    addEdge(graph, 0, 1);
+    addEdge(graph, 0, 2);
+    addEdge(graph, 0, 3);
+    addEdge(graph, 2, 4);
+    console.log(graph);
 }

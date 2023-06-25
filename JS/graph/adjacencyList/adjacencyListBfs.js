@@ -34,6 +34,5 @@ function main() {
 		adjList[u].push(v);
 		adjList[v].push(u);
 	}
-	bfs(adjList, 0);
     console.log(adjList);
 }

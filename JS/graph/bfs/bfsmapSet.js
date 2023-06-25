@@ -31,7 +31,6 @@ function bfs(N, adj, startNode) {
     visited.add(startNode);
     while (q.length) {
         const currentNode = q.shift();
-        visited.add(startNode);
         for (let neighbour of adj.get(currentNode)) {
             if (!visited.has(neighbour)) {
                 q.push(neighbour);
