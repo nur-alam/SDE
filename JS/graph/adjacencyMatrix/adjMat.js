@@ -54,7 +54,8 @@ function main() {
 		adjMat[u][v] = 1;
 		adjMat[v][u] = 1;
 	}
-	bfs(adjMat, 0);
+	console.log(adjMat);
+	// bfs(adjMat, 0);
 }
 
 // example 1

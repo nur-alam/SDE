@@ -26,25 +26,47 @@ function multiDarray(row, col) {
 	return [...Array(row)].map(() => Array(col).fill(0));
 }
 
-function addEdge(graph, u, v) {
-	graph.get(u).add(v);
-	graph.get(v).add(u);
+let visited = [];
+let dfsTraversal = [];
+
+function dfs(adjList, startNode = 0) {
+	visited[startNode] = 1;
+	dfsTraversal.push(startNode);
+	for (let child of adjList[startNode]) {
+		if (!visited[child]) {
+			dfs(adjList, child);
+		}
+	}
 }
 
 function main() {
 	let [N, E] = readLine().split(' ').map(Number);
-	let graph = new Map();
-	for (let i = 0; i < N; i++) {
-		graph.set(i, new Set());
-	}
+	visited = [...Array(N)].fill(0);
+	let adjList = [...Array(N)].map(() => new Array());
 	for (let i = 0; i < E; i++) {
 		let [u, v] = readLine().split(' ').map(Number);
-		graph.get(u).add(v);
-		graph.get(v).add(u);
+		adjList[u].push(v);
+		adjList[v].push(u);
 	}
-	addEdge(graph, 0, 1);
-	addEdge(graph, 0, 3);
-	addEdge(graph, 1, 2);
-	addEdge(graph, 2, 3);
-	console.log(graph);
+	console.log(adjList);
+	dfs(adjList, 0);
+	console.log('dfsTraversal ', dfsTraversal);
 }
+
+// example 1
+// 5 4
+// 0 1
+// 0 2
+// 0 3
+// 2 4
+// output
+// dfs traversal  [ 0, 1, 2, 4, 3 ]
+
+// example 2
+// 4 4
+// 0 1
+// 0 3
+// 1 2
+// 2 3
+// output
+// dfs traversal  [ 0, 1, 2, 3 ]
