@@ -40,11 +40,11 @@ function dfs(adjList, startNode = 0) {
 }
 
 function main() {
-	let [N, E] = readLine().split(' ').map(Number);
+	const [N, E] = readLine().split(' ').map(Number);
 	visited = [...Array(N)].fill(0);
-	let adjList = [...Array(N)].map(() => new Array());
+	const adjList = [...Array(N)].map(() => new Array());
 	for (let i = 0; i < E; i++) {
-		let [u, v] = readLine().split(' ').map(Number);
+		const [u, v] = readLine().split(' ').map(Number);
 		adjList[u].push(v);
 		adjList[v].push(u);
 	}
@@ -52,6 +52,7 @@ function main() {
 	dfs(adjList, 0);
 	console.log('dfsTraversal ', dfsTraversal);
 }
+
 
 // example 1
 // 5 4

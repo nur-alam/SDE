@@ -22,17 +22,33 @@ function readLine() {
 	return inputString[currentLine++];
 }
 
-function multiDarray(row, col) {
-	return [...Array(row)].map(() => Array(col).fill(0));
+function bfs(adjList, startNode = 0, N) {
+	const visited = [...Array(N)].fill(0);
+	const q = [];
+	const bfsTraversal = [];
+	visited[startNode] = 1;
+	q.push(startNode);
+	while (q.length) {
+		const currentNode = q.shift();
+		bfsTraversal.push(currentNode);
+		for (let child of adjList[currentNode]) {
+			if (!visited[child]) {
+				q.push(child);
+				visited[child] = 1;
+			}
+		}
+	}
+	console.log('bfsTraversal ', bfsTraversal);
 }
 
 function main() {
-	let [N, E] = readLine().split(' ').map(Number);
-	let adjList = [...Array(N)].map(() => new Array());
+	const [N, E] = readLine().split(' ').map(Number);
+	const adjList = [...Array(N)].map(() => new Array());
 	for (let i = 0; i < E; i++) {
-		let [u, v] = readLine().split(' ').map(Number);
+		const [u, v] = readLine().split(' ').map(Number);
 		adjList[u].push(v);
 		adjList[v].push(u);
 	}
-    console.log(adjList);
+	console.log(adjList);
+	// bfs(adjList, 0, N);
 }

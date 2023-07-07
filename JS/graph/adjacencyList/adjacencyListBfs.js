@@ -40,14 +40,14 @@ function getPath(node) {
 }
 
 function bfs(adjList, startNode = 0, N) {
-	let visited = [...Array(N)].fill(0);
-	let q = [];
-	let bfsTraversal = [];
+	const visited = [...Array(N)].fill(0);
+	const q = [];
+	const bfsTraversal = [];
 	visited[startNode] = 1;
 	q.push(startNode);
 	parent[startNode] = -1;
 	while (q.length) {
-		let currentNode = q.shift();
+		const currentNode = q.shift();
 		bfsTraversal.push(currentNode);
 		for (let child of adjList[currentNode]) {
 			if (!visited[child]) {
@@ -62,12 +62,12 @@ function bfs(adjList, startNode = 0, N) {
 }
 
 function main() {
-	let [N, E] = readLine().split(' ').map(Number);
-	let adjList = [...Array(N)].map(() => new Array());
+	const [N, E] = readLine().split(' ').map(Number);
+	const adjList = [...Array(N)].map(() => new Array());
 	level = [...Array(N)].fill(0);
 	parent = [...Array(N)].fill(0);
 	for (let i = 0; i < E; i++) {
-		let [u, v] = readLine().split(' ').map(Number);
+		const [u, v] = readLine().split(' ').map(Number);
 		adjList[u].push(v);
 		adjList[v].push(u);
 	}

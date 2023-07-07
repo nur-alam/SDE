@@ -21,9 +21,6 @@ process.stdin.on('end', function () {
 function readLine() {
 	return inputString[currentLine++];
 }
-function multiDarray(row, col) {
-	return [...Array(row)].map(() => Array(col).fill(0));
-}
 
 function bfs(adjMat, startNode = 0) {
 	let visited = Array(adjMat.length).fill(false);
@@ -46,17 +43,28 @@ function bfs(adjMat, startNode = 0) {
 	console.log('bfs traversal ', bfsTraversal);
 }
 
+function multiDarray(row, col) {
+	return [...Array(row)].map(() => Array(col).fill(0));
+}
+
 function main() {
-	let [N, E] = readLine().split(' ').map(Number);
-	let adjMat = multiDarray(N, N);
+	const [N, E] = readLine().split(' ').map(Number);
+	const adjMat = multiDarray(N, N);
 	for (let i = 0; i < E; i++) {
-		let [u, v] = readLine().split(' ').map(Number);
+		const [u, v] = readLine().split(' ').map(Number);
 		adjMat[u][v] = 1;
 		adjMat[v][u] = 1;
 	}
 	console.log(adjMat);
 	// bfs(adjMat, 0);
 }
+
+
+
+
+
+
+
 
 // example 1
 // 5 4
@@ -74,4 +82,4 @@ function main() {
 // 1 2
 // 2 3
 // output
-// bfs traversal  [ 0, 1, 2, 3, 4 ]
+// bfs traversal  [ 0, 1, 3, 2 ]

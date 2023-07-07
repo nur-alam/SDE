@@ -32,13 +32,13 @@ function addEdge(graph, u, v) {
 }
 
 function main() {
-	let [N, E] = readLine().split(' ').map(Number);
-	let graph = new Map();
+	const [N, E] = readLine().split(' ').map(Number);
+	const graph = new Map();
 	for (let i = 0; i < N; i++) {
 		graph.set(i, new Set());
 	}
 	for (let i = 0; i < E; i++) {
-		let [u, v] = readLine().split(' ').map(Number);
+		const [u, v] = readLine().split(' ').map(Number);
 		graph.get(u).add(v);
 		graph.get(v).add(u);
 	}
