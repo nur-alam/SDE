@@ -55,7 +55,7 @@ function main() {
 		adjMat[u][v] = 1;
 		adjMat[v][u] = 1;
 	}
-	console.log(adjMat);
+	console.table(adjMat);
 	// bfs(adjMat, 0);
 }
 

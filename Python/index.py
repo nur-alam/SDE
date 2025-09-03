@@ -1,49 +1,36 @@
-def search(arr, x, n):
-    for i in range(n):
-        if (arr[i] == x):
-            return i
-    return -1
+import cowsay
 
+# from fastapi import FastAPI
 
-def printPostOrder(In, pre, n):
-    root = search(In, pre[0], n)
-    if (root != 0):
-        printPostOrder(In, pre[1:n], root)
-    if (r8888oot != n - 1):
-        printPostOrder(In[root + 1: n],
-                       pre[root + 1: n],
-                       n - root - 1)
-    print(pre[0], end=" ")
+# app = FastAPI()
 
+# @app.get("/")
+# def read_root():
+#     return {"Hello": "World From fast api ofi"}
 
-# Driver code
-In = [4, 2, 5, 1, 3, 6]
-pre = [1, 2, 4, 5, 3, 6]
-n = len(In)
-print("Postorder traversal ")
-printPostOrder(In, pre, n)
+# @app.get("/juicy")
+# def read_root():
+#     return {"Hello": "World From juicy api ofi khabe coffee"}
 
+# @app.get("/ofi")
+# def read_root():
+#     return {"Hello": "bondhu o colleague"}
 
-# Prints postorder traversal from
-# given inorder and preorder traversals
-def printPostOrder(In, pre, n):
+import time
+import sys
 
-    # The first element in pre[] is always
-    # root, search it in in[] to find left
-    # and right subtrees
-    root = search(In, pre[0], n)
+for i in range(5):
+    message = f"Loading {i}..."
+    print(message, end='\r', flush=True)
+    time.sleep(1)
 
-    # If left subtree is not empty,
-    # print left subtree
-    if (root != 0):
-        printPostOrder(In, pre[1:n], root)
+# Dynamically clear the previous line and write "Done"
+done_message = "Done"
+clear_line = ' ' * len(message)
+print(clear_line, end='\r')     # Clear previous message
+print(done_message)
 
-    # If right subtree is not empty,
-    # print right subtree
-    if (root != n - 1):
-        printPostOrder(In[root + 1: n],
-                       pre[root + 1: n],
-                       n - root - 1)
+# cowsay.cow(pairs);
+# cowsay.cow(fruits);
 
-    # Print root
-    print(pre[0], end=" ")
+# run the FastAPI ❯ uvicorn index:app --reload

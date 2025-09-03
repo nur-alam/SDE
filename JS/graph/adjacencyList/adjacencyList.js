@@ -49,6 +49,6 @@ function main() {
 		adjList[u].push(v);
 		adjList[v].push(u);
 	}
-	console.log(adjList);
-	// bfs(adjList, 0, N);
+	// console.table(adjList);
+	bfs(adjList, 0, N);
 }
