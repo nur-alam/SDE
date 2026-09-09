@@ -1,0 +1,5 @@
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateGameDto } from './create-game.dto.js';
+export class UpdateGameDto extends PartialType(CreateGameDto) {
+}
+//# sourceMappingURL=update-game.dto.js.map
