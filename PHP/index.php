@@ -33,8 +33,27 @@ $mysql_functions = [
 // $j = 'NOW()';
 // $d = in_array($j, $mysql_functions);
 
-function shouldRemovePrimaryKey($value)
-{
+function shouldRemovePrimaryKey($value) {
 	return $value === null || $value === '' || $value === 0;
 }
 // echo empty(shouldRemovePrimaryKey([])) . PHP_EOL;
+class A {
+    public $one = '';
+    public $two = '';
+
+    public function echoOne() { echo $this->one . "\n"; }
+    public function echoTwo() { echo $this->two . "\n"; }
+}
+$a = new A();
+$reflector = new ReflectionClass('A');
+$properties = $reflector->getProperties();
+// print_r($properties);
+$i = 1;
+foreach ($properties as $property) {
+    // Dynamically set property values
+    $a->{$property->getName()} = 'juicy ' . $i;
+    // Dynamically call methods
+    $a->{"echo" . ucfirst($property->getName())}();
+    $i++;
+}
+echo 'reflection!' . PHP_EOL;
