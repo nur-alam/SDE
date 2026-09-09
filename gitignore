@@ -2,3 +2,5 @@
 !*.dSYM
 .DS_Store
 .vscode
+dist
+node_moduels
